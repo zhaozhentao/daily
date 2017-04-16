@@ -18,5 +18,6 @@ ______                            _              _______     _______    _______
 </head>
 <body>
 
+<script src="{{ cdn(elixir('assets/js/scripts.js')) }}"></script>
 </body>
 </html>

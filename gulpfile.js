@@ -15,6 +15,34 @@ require('laravel-elixir-vue-2');
  |
  */
 
+var basejs = [
+    'resources/assets/js/vendor/jquery.min.js',
+    'resources/assets/js/vendor/bootstrap.min.js',
+    'resources/assets/js/vendor/moment.min.js',
+    'resources/assets/js/vendor/zh-cn.min.js',
+    'resources/assets/js/vendor/emojify.min.js',
+    'resources/assets/js/vendor/jquery.scrollUp.js',
+    'resources/assets/js/vendor/jquery.pjax.js',
+    'resources/assets/js/vendor/nprogress.js',
+    'resources/assets/js/vendor/jquery.autosize.min.js',
+    'resources/assets/js/vendor/prism.js',
+    'resources/assets/js/vendor/jquery.textcomplete.js',
+    'resources/assets/js/vendor/emoji.js',
+    'resources/assets/js/vendor/marked.min.js',
+    'resources/assets/js/vendor/ekko-lightbox.js',
+    'resources/assets/js/vendor/localforage.min.js',
+    'resources/assets/js/vendor/jquery.inline-attach.min.js',
+    'resources/assets/js/vendor/snowfall.jquery.min.js',
+    'resources/assets/js/vendor/upload-image.js',
+    'resources/assets/js/vendor/bootstrap-switch.js',
+    'resources/assets/js/vendor/messenger.js',
+    'resources/assets/js/vendor/anchorific.js',
+    'resources/assets/js/vendor/analytics.js',
+    'resources/assets/js/vendor/jquery.jscroll.js',
+    'resources/assets/js/vendor/jquery.highlight.js',
+    'node_modules/sweetalert/dist/sweetalert.min.js',
+    'node_modules/social-share.js/dist/js/social-share.min.js',
+];
 
 elixir(function (mix) {
     mix
@@ -29,6 +57,10 @@ elixir(function (mix) {
         .sass([
             'app.scss'
         ], 'public/assets/css/styles.css')
+
+        .scripts(basejs.concat([
+            'resources/assets/js/app.js',
+        ]), 'public/assets/js/scripts.js', './')
 
         .version([
             'assets/css/styles.css'
