@@ -14,3 +14,13 @@ function cdn($filepath)
         return config('app.url') . $filepath;
     }
 }
+
+function lang($text, $parameters = [])
+{
+    return trans('daily.'.$text, $parameters);
+}
+
+function route_class()
+{
+    return str_replace('.', '-', Route::currentRouteName());
+}

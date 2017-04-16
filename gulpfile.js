@@ -55,6 +55,7 @@ elixir(function (mix) {
         ], 'public/assets/fonts/font-awesome')
 
         .sass([
+            'base.scss',
             'app.scss'
         ], 'public/assets/css/styles.css')
 

@@ -1,9 +1,44 @@
-
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
 // Variables
 @import "variables";
 
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.navbar-default {
+  min-height: 45px;
+  background-color: #fff;
+  border: none;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+// ipad below
+/* iPads (portrait) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .topnav {
+    ul.github-login {
+      margin-right: -15px !important;
+      .btn {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}
+
+.topnav {
+  .github-login {
+
+  }
+}
+
+.topnav .github-login .btn.login-btn {
+  margin-top: 7px;
+}
+.topnav .github-login .btn.weichat-login-btn {
+  margin-right: 5px;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #00c4bc;
+  border-color: #00c4bc;
+}

@@ -16,7 +16,13 @@ ______                            _              _______     _______    _______
 
     <link rel="stylesheet" href="{{ cdn(elixir('assets/css/styles.css')) }}">
 </head>
-<body>
+<body id="body" class="{{ route_class() }}">
+
+<div id="wrap">
+    @include('layouts.partials.nav')
+
+    @yield('content')
+</div>
 
 <script src="{{ cdn(elixir('assets/js/scripts.js')) }}"></script>
 </body>
