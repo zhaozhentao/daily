@@ -14,6 +14,7 @@ ______                            _              _______     _______    _______
 <html>
 <head>
 
+    <link rel="stylesheet" href="{{ cdn(elixir('assets/css/styles.css')) }}">
 </head>
 <body>
 

@@ -1,4 +1,6 @@
 const elixir = require('laravel-elixir');
+require('laravel-elixir-livereload');
+require('laravel-elixir-compress');
 
 require('laravel-elixir-vue-2');
 
@@ -13,7 +15,26 @@ require('laravel-elixir-vue-2');
  |
  */
 
-elixir((mix) => {
-    mix.sass('app.scss')
-       .webpack('app.js');
+
+elixir(function (mix) {
+    mix
+        .copy([
+            'node_modules/bootstrap-sass/assets/fonts/bootstrap'
+        ], 'public/assets/fonts/bootstrap')
+
+        .copy([
+            'node_modules/font-awesome/fonts'
+        ], 'public/assets/fonts/font-awesome')
+
+        .sass([
+            'app.scss'
+        ], 'public/assets/css/styles.css')
+
+        .version([
+            'assets/css/styles.css'
+        ])
+
+    ;
+
+    mix.compress();
 });
