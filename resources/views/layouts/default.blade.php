@@ -13,6 +13,7 @@ ______                            _              _______     _______    _______
 <!DOCTYPE html>
 <html>
 <head>
+    <title>@section('title') Daily @show - Powered by PHPHub</title>
 
     <link rel="stylesheet" href="{{ cdn(elixir('assets/css/styles.css')) }}">
 </head>
@@ -21,7 +22,9 @@ ______                            _              _______     _______    _______
 <div id="wrap">
     @include('layouts.partials.nav')
 
-    @yield('content')
+    <div class="container main-container">
+        @yield('content')
+    </div>
 </div>
 
 <script src="{{ cdn(elixir('assets/js/scripts.js')) }}"></script>

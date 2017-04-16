@@ -3,6 +3,16 @@
 // Variables
 @import "variables";
 
+html,
+body {
+  /* for sticky footer */
+  height: 100%;
+  font-size: 14px;
+  color: #525252;
+  // font-family: "lato-regular", "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-family: NotoSansHans-Regular, AvenirNext-Regular, arial, Hiragino Sans GB, "Microsoft Yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+  background: #f0f2f5;
+}
 
 .navbar-default {
   min-height: 45px;
@@ -33,6 +43,7 @@
 .topnav .github-login .btn.login-btn {
   margin-top: 7px;
 }
+
 .topnav .github-login .btn.weichat-login-btn {
   margin-right: 5px;
 }
@@ -41,4 +52,58 @@
   color: #fff;
   background-color: #00c4bc;
   border-color: #00c4bc;
+}
+
+.panel {
+  .panel-heading {
+    color: #333;
+    background-color: #fcfcfc;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    h3 {
+      color: #999;
+      font-size: 14px;
+    }
+  }
+  .panel-body {
+    border: 1px solid #ddd;
+  }
+  .panel-footer {
+    border-top: none;
+    background-color: #fcfcfc;
+  }
+}
+
+.panel {
+  border-radius: 0px;
+  box-shadow: none;
+  border: 1px solid #dde2e8;
+}
+
+.panel {
+  .panel-heading, .panel-body {
+    border: none;
+  }
+}
+
+.panel .panel-heading {
+  border-bottom: 1px solid #eeeeee;
+  background-color: #fff;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    padding-bottom: 228px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+    height: 206px;
+  }
+
+  #wrap {
+    min-height: 100%;
+    position: relative;
+  }
 }
