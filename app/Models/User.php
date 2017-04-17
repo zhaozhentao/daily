@@ -6,6 +6,7 @@ use App\Models\Traits\UserAvatarHelper;
 use App\Models\Traits\UserSocialiteHelper;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laracasts\Presenter\PresentableTrait;
 
 class User extends Authenticatable
 {
@@ -22,4 +23,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    use PresentableTrait;
+    public $presenter = 'Daily\Presenters\UserPresenter';
 }

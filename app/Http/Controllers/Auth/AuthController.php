@@ -60,6 +60,14 @@ class AuthController extends Controller implements UserCreatorListener
         return redirect(route('signup'));
     }
 
+    public function loginUser($user)
+    {
+        Auth::loginUsingId($user->id);
+        Session::forget('oauthData');
+        Flash::success(lang('Login Successfully.'));
+        return redirect('/');
+    }
+
     #----------------  UserCreatorListener -------------------
     public function userValidationError($errors)
     {

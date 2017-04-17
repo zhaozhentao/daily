@@ -182,6 +182,7 @@ return [
         //
         Laravel\Socialite\SocialiteServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class
     ],
 
     /*

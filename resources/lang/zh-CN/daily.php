@@ -14,4 +14,5 @@ return [
     'Username' => '用户名',
     'Email' => '邮箱',
     'Confirm' => '确认',
+    'Logout' => '退出',
 ];

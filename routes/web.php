@@ -8,9 +8,11 @@ Route::get('/auth/oauth', 'Auth\AuthController@oauth')->name('auth.oauth');
 Route::get('/auth/callback', 'Auth\AuthController@callback')->name('auth.callback');
 Route::get('/signup', 'Auth\AuthController@create')->name('signup');
 Route::post('/signup', 'Auth\AuthController@store');
+Route::get('/logout', 'Auth\AuthController@logout')->name('logout');
 
 # ------------------ test ------------------------
 Route::get('/test', 'TestController@test')->name('test');
 
 # ------------------ user ------------------------
 Route::get('/users/{id}/edit', 'UsersController@edit')->name('users.edit');
+Route::get('/users/{id}', 'UsersController@show')->name('users.show');

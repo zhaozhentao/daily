@@ -16953,4 +16953,17 @@ body {
   }
 }
 
+.avatar-topnav {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+  margin-top: -5px;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
+.text-md {
+  font-size: 1.2em;
+}
+
 /*# sourceMappingURL=styles.css.map */
