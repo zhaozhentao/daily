@@ -13,7 +13,7 @@ ______                            _              _______     _______    _______
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@section('title') Daily @show - Powered by PHPHub</title>
+    <title>@section('title') Daily @show - Powered by ZZT</title>
 
     <link rel="stylesheet" href="{{ cdn(elixir('assets/css/styles.css')) }}">
 </head>

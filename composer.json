@@ -17,14 +17,17 @@
     "phpunit/phpunit": "~5.0",
     "laravel/socialite": "^2.0",
     "symfony/css-selector": "3.1.*",
-    "symfony/dom-crawler": "3.1.*"
+    "symfony/dom-crawler": "3.1.*",
+    "laracasts/flash": "^2.0",
+    "guzzlehttp/guzzle": "6.2.3"
   },
   "autoload": {
     "classmap": [
       "database"
     ],
     "psr-4": {
-      "App\\": "app/"
+      "App\\": "app/",
+      "Daily\\": "app/Daily/"
     },
     "files": [
       "app/Helpers.php"

@@ -2,22 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Traits\UserAvatarHelper;
 use App\Models\Traits\UserSocialiteHelper;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable, UserSocialiteHelper;
+    use Notifiable, UserSocialiteHelper, UserAvatarHelper;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $guarded = ['id', 'is_banned'];
 
     /**
      * The attributes that should be hidden for arrays.
