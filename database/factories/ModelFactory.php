@@ -12,6 +12,9 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
+use App\Models\Topic;
+use Carbon\Carbon;
+
 $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     static $password;
 
@@ -20,5 +23,14 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(Topic::class, function (Faker\Generator $faker) {
+    return [
+        'title'      => $faker->sentence(),
+        'body'       => $faker->text(),
+        'created_at' => Carbon::now()->toDateTimeString(),
+        'updated_at' => Carbon::now()->toDateTimeString(),
     ];
 });

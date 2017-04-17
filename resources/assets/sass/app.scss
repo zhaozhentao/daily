@@ -120,3 +120,35 @@ body {
 .text-md {
   font-size: 1.2em;
 }
+
+.home-nav {
+  padding: 10px;
+}
+
+.home-nav-container {
+  text-align: center;
+  height: 54px;
+  padding-top: 20px;
+}
+
+.home-content-time {
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  width: 130px;
+  text-transform: uppercase;
+  float: right;
+  color: #999;
+  font-size: 14px;
+  text-align: right;
+}
+
+.home-content-title {
+  font-size: 16px;
+}
+
+.home-content-item {
+  margin-top: 16px;
+  display: inline-block;
+  width: 100%;
+}

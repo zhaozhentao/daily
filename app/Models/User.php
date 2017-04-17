@@ -25,4 +25,9 @@ class User extends Authenticatable
 
     use PresentableTrait;
     public $presenter = 'Daily\Presenters\UserPresenter';
+
+    public function topics()
+    {
+        return $this->hasMany(Topic::class);
+    }
 }
