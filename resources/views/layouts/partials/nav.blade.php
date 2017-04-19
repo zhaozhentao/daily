@@ -1,5 +1,10 @@
 <div role="navigation" class="navbar navbar-default topnav">
     <div class="container">
+        <div class="navbar-left">
+            <a href="{{ route('home') }}" class="logo">
+                Daily
+            </a>
+        </div>
         <div class="navbar-right">
             <ul class="nav navbar-nav github-login">
                 @if(Auth::check())
@@ -13,7 +18,12 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li>
                                 <a href="{{ route('users.show', Auth::user()->id) }}">
-                                    <i class="fa fa-user text-md"></i> 个人中心
+                                    <i class="fa fa-user-circle text-md" style="margin-right: 6px"></i> 个人中心
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('topics.create') }}">
+                                    <i class="fa fa-edit text-md" style="margin-right: 6px;"></i> 日志
                                 </a>
                             </li>
                             <li role="separator" class="divider"></li>

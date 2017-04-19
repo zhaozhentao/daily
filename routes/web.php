@@ -1,6 +1,7 @@
 <?php
 # ------------------ static ------------------------
 Route::get('/', 'PagesController@home')->name('home');
+Route::get('/aboutme', 'PagesController@about')->name('aboutme');
 
 # ------------------ Authentication ------------------------
 Route::get('auth/login', 'Auth\AuthController@login')->name('auth.login');
@@ -16,3 +17,8 @@ Route::get('/test', 'TestController@test')->name('test');
 # ------------------ user ------------------------
 Route::get('/users/{id}/edit', 'UsersController@edit')->name('users.edit');
 Route::get('/users/{id}', 'UsersController@show')->name('users.show');
+
+# ------------------ topic ------------------------
+Route::get('/topics/create', 'TopicsController@create')->name('topics.create');
+Route::post('/topics', 'TopicsController@store')->name('topics.store');
+Route::post('/upload_image', 'TopicsController@uploadImage')->name('upload_image');

@@ -63,6 +63,18 @@ elixir(function (mix) {
             'resources/assets/js/app.js',
         ]), 'public/assets/js/scripts.js', './')
 
+        // editor
+        .scripts([
+            'vendor/inline-attachment.js',
+            'vendor/codemirror-4.inline-attachment.js',
+            'vendor/simplemde.min.js',
+        ], 'public/assets/js/editor.js')
+
+        // API Web View
+        .sass([
+            'vendor/simplemde.min.scss'
+        ], 'public/assets/css/editor.css')
+
         .version([
             'assets/css/styles.css'
         ])

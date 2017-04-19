@@ -16998,4 +16998,12 @@ body {
   width: 100%;
 }
 
+.logo {
+  text-decoration: none !important;
+  color: black !important;
+  font-size: 26px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
 /*# sourceMappingURL=styles.css.map */

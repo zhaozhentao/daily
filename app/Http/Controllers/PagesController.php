@@ -12,4 +12,9 @@ class PagesController extends Controller
 
         return view('pages.home', compact('topics'));
     }
+
+    public function about()
+    {
+        return 'about';
+    }
 }

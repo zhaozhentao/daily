@@ -24,3 +24,13 @@ function route_class()
 {
     return str_replace('.', '-', Route::currentRouteName());
 }
+
+function get_cdn_domain()
+{
+    return config('app.url_static') ?: config('app.url');
+}
+
+function get_user_static_domain()
+{
+    return config('app.user_static') ?: config('app.url');
+}
