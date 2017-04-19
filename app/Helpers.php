@@ -17,7 +17,7 @@ function cdn($filepath)
 
 function lang($text, $parameters = [])
 {
-    return trans('daily.'.$text, $parameters);
+    return trans('daily.' . $text, $parameters);
 }
 
 function route_class()
@@ -33,4 +33,9 @@ function get_cdn_domain()
 function get_user_static_domain()
 {
     return config('app.user_static') ?: config('app.url');
+}
+
+function get_platform()
+{
+    return Request::header('X-Client-Platform');
 }

@@ -20,5 +20,6 @@ Route::get('/users/{id}', 'UsersController@show')->name('users.show');
 
 # ------------------ topic ------------------------
 Route::get('/topics/create', 'TopicsController@create')->name('topics.create');
-Route::post('/topics', 'TopicsController@store')->name('topics.store');
 Route::post('/upload_image', 'TopicsController@uploadImage')->name('upload_image');
+Route::post('/topics', 'TopicsController@store')->name('topics.store');
+Route::get('/topics/{id}', 'TopicsController@show')->name('topics.show');

@@ -2,10 +2,10 @@
 
 namespace Daily\Handler;
 
-use Daily\Handler\Exception\ImageUploadException;
-use Illuminate\Support\Facades\Log;
-use Image;
 use Auth;
+use Daily\Handler\Exception\ImageUploadException;
+use Image;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Created by PhpStorm.
@@ -15,6 +15,9 @@ use Auth;
  */
 class UploadImageHandler
 {
+    /**
+     * @var UploadedFile $file
+     */
     protected $file;
     protected $allowed_extensions = ["png", "jpg", "gif", 'jpeg'];
 
