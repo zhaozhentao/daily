@@ -4,8 +4,8 @@ namespace App\Models;
 
 use App\Models\Traits\UserAvatarHelper;
 use App\Models\Traits\UserSocialiteHelper;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Laracasts\Presenter\PresentableTrait;
 
 class User extends Authenticatable

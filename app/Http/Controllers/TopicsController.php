@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Topic;
 use Daily\Core\CreatorListener;
 use Daily\Handler\Exception\ImageUploadException;
 use Illuminate\Http\Request;
@@ -10,7 +11,9 @@ class TopicsController extends Controller implements CreatorListener
 {
     public function show($id)
     {
+        $topic = Topic::find($id);
 
+        return view('topics.show', compact('topic'));
     }
 
     public function create()

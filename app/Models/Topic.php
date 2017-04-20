@@ -30,4 +30,9 @@ class Topic extends Model
     {
         return date("d/m/Y", strtotime($date));;
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

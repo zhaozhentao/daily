@@ -2,6 +2,7 @@
 
 namespace Daily\Presenters;
 
+use Daily\Markdown\Markdown;
 use Laracasts\Presenter\Presenter;
 
 /**
@@ -18,5 +19,10 @@ class UserPresenter extends Presenter
             $postfix = $size > 0 ? "?imageView2/1/w/{$size}/h/{$size}" : '';
             return cdn('uploads/avatars/' . $this->avatar) . $postfix;
         }
+    }
+
+    public function formattedSignature()
+    {
+        return (new Markdown())->convertMarkdownToHtml($this->signature);
     }
 }

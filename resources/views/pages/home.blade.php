@@ -14,7 +14,7 @@
                     <ul>
                         @foreach($topics as $topic)
                             <li class="home-content-item">
-                                <a href="" class="home-content-title">{{ $topic->title }}</a>
+                                <a href="{{ route('topics.show', $topic->id) }}" class="home-content-title">{{ $topic->title }}</a>
                                 <small class="home-content-time">{{ $topic->created_at }}</small>
                             </li>
                         @endforeach
