@@ -35,4 +35,9 @@ class Topic extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function appends()
+    {
+        return $this->hasMany(Append::class);
+    }
 }

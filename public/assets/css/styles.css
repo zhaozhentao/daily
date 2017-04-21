@@ -17080,6 +17080,16 @@ body {
   /*min-width: 320px;*/
 }
 
+.popover-title {
+  display: none;
+}
+
+.popover-content {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
 .popover.fade > .arrow {
   color: #1b1c1d;
 }
@@ -17098,6 +17108,42 @@ body {
 
 .popover.left > .arrow:after, .popover.left > .arrow {
   border-left-color: #1b1c1d;
+}
+
+.appends {
+  background-color: #FFFAE2;
+  border-left: 5px solid #F2C69A;
+  padding: 10px;
+  font-size: 12px;
+  line-height: 120%;
+  text-align: left;
+  border-bottom: 1px dotted #E8E8E8;
+}
+
+.appends .append-content {
+  padding-top: 10px;
+  margin-bottom: -10px;
+}
+
+@media only screen and (min-device-width: 120px) and (max-device-width: 480px) {
+  .markdown-reply p {
+    margin-bottom: 0px !important;
+  }
+}
+
+.meta, .operate {
+  color: #d0d0d0;
+  font-size: 12px;
+}
+
+.meta a, .operate a {
+  padding: 1px 2px;
+  color: #B9BDC0;
+  text-decoration: none;
+}
+
+.meta a.anchor, .operate a.anchor {
+  color: #d0d0d0;
 }
 
 /*# sourceMappingURL=styles.css.map */

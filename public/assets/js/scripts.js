@@ -5567,7 +5567,21 @@ var QRCode;!function(){function t(t){this.mode=l.MODE_8BIT_BYTE,this.data=t,this
 
         siteBootUp: function () {
             var self = this;
+            self.initTimeAgo();
             self.initPopup();
+        },
+
+        initTimeAgo: function(){
+            moment.lang('zh-cn');
+            $('.timeago').each(function(){
+                var time_str = $(this).text();
+                if(moment(time_str, "YYYY-MM-DD HH:mm:ss", true).isValid()) {
+                    $(this).text(moment(time_str).fromNow());
+                }
+
+                $(this).addClass('popover-with-html');
+                $(this).attr('data-content', time_str);
+            });
         },
 
         /**
