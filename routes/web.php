@@ -23,3 +23,9 @@ Route::get('/topics/create', 'TopicsController@create')->name('topics.create');
 Route::post('/upload_image', 'TopicsController@uploadImage')->name('upload_image');
 Route::post('/topics', 'TopicsController@store')->name('topics.store');
 Route::get('/topics/{id}', 'TopicsController@show')->name('topics.show');
+Route::get('/topics/{id}/edit', 'TopicsController@edit')->name('topics.edit');
+
+Route::post('topics/recommend/{id}', 'TopicsController@recommend')->name('topics.recommend');
+Route::post('topics/pin/{id}', 'TopicsController@pin')->name('topics.pin');
+Route::post('topics/sink/{id}', 'TopicsController@sink')->name('topics.sink');
+Route::delete('topics/{id}', 'TopicsController@destroy')->name('topics.destroy');

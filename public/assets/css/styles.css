@@ -17146,4 +17146,8 @@ body {
   color: #d0d0d0;
 }
 
+.operate .actions {
+  line-height: 36px;
+}
+
 /*# sourceMappingURL=styles.css.map */

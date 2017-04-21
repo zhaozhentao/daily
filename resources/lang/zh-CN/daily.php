@@ -20,4 +20,6 @@ return [
     'Publish' => '发 布',
     'This topic has been mark as Excenllent Topic.' => '本帖已被设为精华帖！',
     'Append' => '附言',
+    'Delete' => '删除',
+    'Edit' => '编辑',
 ];

@@ -32,6 +32,8 @@
           </div>
         @endforeach
       </div>
+
+      @include('topics.partials.topic_operate')
     </div>
   </div>
 @stop
