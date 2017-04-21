@@ -6,6 +6,7 @@ use App\Models\Topic;
 use Daily\Core\CreatorListener;
 use Daily\Handler\Exception\ImageUploadException;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class TopicsController extends Controller implements CreatorListener
 {
@@ -40,6 +41,22 @@ class TopicsController extends Controller implements CreatorListener
         }
 
         return $data;
+    }
+
+    /**
+     * ----------------------------------------
+     * Admin Topic Management
+     * ----------------------------------------
+     */
+    public function destroy($id)
+    {
+        $topic = Topic::findOrFail($id);
+        $this->authorize('delete', $topic);
+        $topic->delete();
+
+        Flash::success(lang('Operation succeeded.'));
+
+        return redirect(route('home'));
     }
 
     public function createSuccess($model)

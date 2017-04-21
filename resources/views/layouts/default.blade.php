@@ -13,35 +13,35 @@ ______                            _              _______     _______    _______
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@section('title') Daily @show</title>
+  <title>@section('title') Daily @show</title>
 
-    <link rel="stylesheet" href="{{ cdn(elixir('assets/css/styles.css')) }}">
-    <script>
-        Config = {
-            'cdnDomain': '{{ get_cdn_domain() }}',
-            'user_id': {{ $currentUser ? $currentUser->id : 0 }},
-            'user_avatar': {!! $currentUser ? '"'.$currentUser->present()->gravatar() . '"' : '""' !!},
-            'user_link': {!! $currentUser ? '"'. route('users.show', $currentUser->id) . '"' : '""' !!},
-            'routes': {
-                'upload_image' : '{{ route('upload_image') }}'
-            },
-            'token': '{{ csrf_token() }}',
-            'environment': '{{ app()->environment() }}',
-            'following_users': []
-        };
+  <link rel="stylesheet" href="{{ cdn(elixir('assets/css/styles.css')) }}">
+  <script>
+      Config = {
+          'cdnDomain': '{{ get_cdn_domain() }}',
+          'user_id': {{ $currentUser ? $currentUser->id : 0 }},
+          'user_avatar': {!! $currentUser ? '"'.$currentUser->present()->gravatar() . '"' : '""' !!},
+          'user_link': {!! $currentUser ? '"'. route('users.show', $currentUser->id) . '"' : '""' !!},
+          'routes': {
+              'upload_image': '{{ route('upload_image') }}'
+          },
+          'token': '{{ csrf_token() }}',
+          'environment': '{{ app()->environment() }}',
+          'following_users': []
+      };
 
-        var ShowCrxHint = '{{isset($show_crx_hint) ? $show_crx_hint : 'no'}}';
-    </script>
+      var ShowCrxHint = '{{isset($show_crx_hint) ? $show_crx_hint : 'no'}}';
+  </script>
 </head>
 
 <body id="body" class="{{ route_class() }}">
 
 <div id="wrap">
-    @include('layouts.partials.nav')
+  @include('layouts.partials.nav')
 
-    <div class="container main-container">
-        @yield('content')
-    </div>
+  <div class="container main-container">
+    @yield('content')
+  </div>
 </div>
 
 <script src="{{ cdn(elixir('assets/js/scripts.js')) }}"></script>
