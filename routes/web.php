@@ -24,6 +24,7 @@ Route::post('/upload_image', 'TopicsController@uploadImage')->name('upload_image
 Route::post('/topics', 'TopicsController@store')->name('topics.store');
 Route::get('/topics/{id}', 'TopicsController@show')->name('topics.show');
 Route::get('/topics/{id}/edit', 'TopicsController@edit')->name('topics.edit');
+Route::patch('/topics/{id}', 'TopicsController@update')->name('topics.update');
 
 Route::post('topics/recommend/{id}', 'TopicsController@recommend')->name('topics.recommend');
 Route::post('topics/pin/{id}', 'TopicsController@pin')->name('topics.pin');

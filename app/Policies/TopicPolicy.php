@@ -14,4 +14,9 @@ class TopicPolicy
     {
         return $currentUser->id = $topic->user_id;
     }
+
+    public function update(User $currentUser, Topic $topic)
+    {
+        return $currentUser->id == $topic->user_id;
+    }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTopicRequest;
 use App\Models\Topic;
 use Daily\Core\CreatorListener;
 use Daily\Handler\Exception\ImageUploadException;
+use Daily\Markdown\Markdown;
 use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 
@@ -25,6 +27,31 @@ class TopicsController extends Controller implements CreatorListener
     public function store(Request $request)
     {
         return app()->make('Daily\Creators\TopicCreator')->create($this, $request->except('_token'));
+    }
+
+    public function edit($id)
+    {
+        $topic = Topic::findOrFail($id);
+        $this->authorize('update', $topic);
+
+        $topic->body = $topic->body_original;
+        return view('topics.create_edit', compact('topic'));
+    }
+
+    public function update($id, StoreTopicRequest $request)
+    {
+        $topic = Topic::findOrFail($id);
+        $this->authorize('update', $topic);
+
+        $data = $request->only(['title', 'body']);
+        $data['body_original'] = $data['body'];
+        $data['body'] = (new Markdown())->convertMarkdownToHtml($data['body_original']);
+        $data['excerpt'] = Topic::makeExcerpt($data['body']);
+
+        $topic->update($data);
+        Flash::success(lang('Operation succeeded.'));
+
+        return redirect(route('topics.show', $id));
     }
 
     public function uploadImage(Request $request)
