@@ -7,5 +7,5 @@
            href="https://laravel-china.org/topics/3422"><i class="fa fa-paw" aria-hidden="true"></i></a>
         {!! $topic->user->present()->formattedSignature() !!}
     @endif
-    
+
 </div>
