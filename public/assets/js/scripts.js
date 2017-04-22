@@ -5571,6 +5571,7 @@ var QRCode;!function(){function t(t){this.mode=l.MODE_8BIT_BYTE,this.data=t,this
             self.initPopup();
             self.initDeleteForm();
             self.initAjax();
+            self.initEditorPreview();
         },
 
         initTimeAgo: function () {
@@ -5641,7 +5642,7 @@ var QRCode;!function(){function t(t){this.mode=l.MODE_8BIT_BYTE,this.data=t,this
                 });
         },
 
-        initAjax: function() {
+        initAjax: function () {
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -5652,7 +5653,7 @@ var QRCode;!function(){function t(t){this.mode=l.MODE_8BIT_BYTE,this.data=t,this
             this.initAppendsModal();
         },
 
-        initAppendsModal: function() {
+        initAppendsModal: function () {
             var self = this;
             var appendsContainer = $('.topic .appends-container');
             var appendText = appendsContainer.data('lang-append');
@@ -5661,7 +5662,7 @@ var QRCode;!function(){function t(t){this.mode=l.MODE_8BIT_BYTE,this.data=t,this
             var count = 0;
             var appendMsg = '';
 
-            modal.find('form').on('submit', function() {
+            modal.find('form').on('submit', function () {
                 var tpl = '';
                 count = appendsContainer.find('.appends').length;
                 appendMsg = $(this).find('textarea').val();
@@ -5674,14 +5675,14 @@ var QRCode;!function(){function t(t){this.mode=l.MODE_8BIT_BYTE,this.data=t,this
                         data: {
                             content: appendMsg
                         },
-                    }).done(function(data) {
+                    }).done(function (data) {
                         if (data.status === 200) {
                             tpl += '<div class="appends">';
-                            tpl +=     '<span class="meta">' + appendText + ' ' + count + ' &nbsp;·&nbsp; <abbr title="' + data.append.created_at + '" class="timeago">' + data.append.created_at + '</abbr></span>';
-                            tpl +=     '<div class="sep5"></div>';
-                            tpl +=     '<div class="markdown-reply append-content">';
-                            tpl +=         data.append.content;
-                            tpl +=     '</div>';
+                            tpl += '<span class="meta">' + appendText + ' ' + count + ' &nbsp;·&nbsp; <abbr title="' + data.append.created_at + '" class="timeago">' + data.append.created_at + '</abbr></span>';
+                            tpl += '<div class="sep5"></div>';
+                            tpl += '<div class="markdown-reply append-content">';
+                            tpl += data.append.content;
+                            tpl += '</div>';
                             tpl += '</div>';
                         }
 
@@ -5694,9 +5695,35 @@ var QRCode;!function(){function t(t){this.mode=l.MODE_8BIT_BYTE,this.data=t,this
                 return false;
             });
 
-            modal.on('hidden.bs.modal', function() {
+            modal.on('hidden.bs.modal', function () {
                 $(this).find('textarea').val('');
                 submitBtn.html('提交').removeClass('disabled').prop('disabled', false);
+            });
+        },
+
+        /**
+         * do content preview
+         */
+        runPreview: function () {
+            var replyContent = $("#reply_content");
+            var oldContent = replyContent.val();
+
+            if (oldContent) {
+                marked(oldContent, function (err, content) {
+                    $('#preview-box').html(content);
+                    emojify.run(document.getElementById('preview-box'));
+                });
+            }
+        },
+
+        initEditorPreview: function () {
+            var self = this;
+            $("#reply_content").focus(function (event) {
+                $("#preview-box").fadeIn(1500);
+                $("#preview-lable").fadeIn(1500);
+            });
+            $('#reply_content').keyup(function () {
+                self.runPreview();
             });
         },
 

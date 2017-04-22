@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-  <div class="col-md-9 topics-show main-col">
+  <div class="col-md-8 col-md-offset-2 topics-show main-col">
     <div class="topic panel panel-default">
       <div class="infos panel-heading">
         <h1 class="panel-title topic-title">{{ $topic->title }}</h1>
@@ -35,5 +35,6 @@
 
       @include('topics.partials.topic_operate')
     </div>
+    @include('topics.partials.show_segment')
   </div>
 @stop

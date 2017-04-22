@@ -17150,4 +17150,12 @@ body {
   line-height: 36px;
 }
 
+.reply-box .CodeMirror, .reply-box .CodeMirror-scroll {
+  min-height: 500px;
+}
+
+.reply-box .CodeMirror pre {
+  font-size: 14px;
+}
+
 /*# sourceMappingURL=styles.css.map */

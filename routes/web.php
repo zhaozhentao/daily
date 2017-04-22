@@ -31,3 +31,6 @@ Route::post('topics/{id}/recommend', 'TopicsController@recommend')->name('topics
 Route::post('topics/{id}/pin', 'TopicsController@pin')->name('topics.pin');
 Route::post('topics/{id}/sink', 'TopicsController@sink')->name('topics.sink');
 Route::delete('topics/{id}', 'TopicsController@destroy')->name('topics.destroy');
+
+# ------------------ topic ------------------------
+Route::post('/replies', 'RepliesController@store')->name('replies.store');

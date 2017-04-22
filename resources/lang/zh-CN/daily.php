@@ -27,4 +27,9 @@ return [
     'Close' => '关闭',
     'append_notice' => '附加内容, 使用此功能的话, 会给所有参加过讨论的人发送提醒.',
     'Submit' => '提交',
+
+    'You need to verify the email for commenting.' => '需要验证邮箱后才能发表评论.',
+    'User Login Required for commenting.' => '需要登录后才能发表评论.',
+    'Reply' => '回复',
+
 ];
