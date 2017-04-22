@@ -34,4 +34,9 @@ class TopicPolicy
     {
         return $currentUser->id == $topic->user_id;
     }
+
+    public function append(User $currentUser, Topic $topic)
+    {
+        return $currentUser->id == $topic->user_id;
+    }
 }

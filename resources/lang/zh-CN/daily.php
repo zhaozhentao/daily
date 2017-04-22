@@ -22,4 +22,9 @@ return [
     'Append' => '附言',
     'Delete' => '删除',
     'Edit' => '编辑',
+
+    'Append Content' => '添加附言',
+    'Close' => '关闭',
+    'append_notice' => '附加内容, 使用此功能的话, 会给所有参加过讨论的人发送提醒.',
+    'Submit' => '提交',
 ];

@@ -91,6 +91,55 @@
             });
 
             this.initDataAjax();
+            this.initAppendsModal();
+        },
+
+        initAppendsModal: function() {
+            var self = this;
+            var appendsContainer = $('.topic .appends-container');
+            var appendText = appendsContainer.data('lang-append');
+            var modal = $('#exampleModal');
+            var submitBtn = modal.find('button[type=submit]');
+            var count = 0;
+            var appendMsg = '';
+
+            modal.find('form').on('submit', function() {
+                var tpl = '';
+                count = appendsContainer.find('.appends').length;
+                appendMsg = $(this).find('textarea').val();
+
+                if ($.trim(appendMsg) !== '') {
+                    submitBtn.html('提交中...').addClass('disabled').prop('disabled', true);
+                    $.ajax({
+                        method: 'POST',
+                        url: $(this).attr('action'),
+                        data: {
+                            content: appendMsg
+                        },
+                    }).done(function(data) {
+                        if (data.status === 200) {
+                            tpl += '<div class="appends">';
+                            tpl +=     '<span class="meta">' + appendText + ' ' + count + ' &nbsp;·&nbsp; <abbr title="' + data.append.created_at + '" class="timeago">' + data.append.created_at + '</abbr></span>';
+                            tpl +=     '<div class="sep5"></div>';
+                            tpl +=     '<div class="markdown-reply append-content">';
+                            tpl +=         data.append.content;
+                            tpl +=     '</div>';
+                            tpl += '</div>';
+                        }
+
+                        $(tpl).hide().appendTo(appendsContainer).slideDown();
+                        self.initTimeAgo();
+                        modal.modal('hide');
+                    });
+                }
+
+                return false;
+            });
+
+            modal.on('hidden.bs.modal', function() {
+                $(this).find('textarea').val('');
+                submitBtn.html('提交').removeClass('disabled').prop('disabled', false);
+            });
         },
 
         initDataAjax: function () {

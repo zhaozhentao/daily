@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTopicRequest;
+use App\Models\Append;
 use App\Models\Topic;
 use Daily\Core\CreatorListener;
 use Daily\Handler\Exception\ImageUploadException;
@@ -38,6 +39,23 @@ class TopicsController extends Controller implements CreatorListener
         return view('topics.create_edit', compact('topic'));
     }
 
+    public function append($id, Request $request)
+    {
+        $topic = Topic::findOrFail($id);
+        $this->authorize('append', $topic);
+
+        $markdown = new Markdown;
+        $content = $markdown->convertMarkdownToHtml($request->input('content'));
+
+        $append = Append::create(['topic_id' => $topic->id, 'content' => $content]);
+
+        return response([
+            'status' => 200,
+            'message' => lang('Operation succeeded.'),
+            'append' => $append
+        ]);
+    }
+
     public function update($id, StoreTopicRequest $request)
     {
         $topic = Topic::findOrFail($id);
@@ -52,22 +70,6 @@ class TopicsController extends Controller implements CreatorListener
         Flash::success(lang('Operation succeeded.'));
 
         return redirect(route('topics.show', $id));
-    }
-
-    public function uploadImage(Request $request)
-    {
-        if ($file = $request->file('file')) {
-            try {
-                $upload_status = app('Daily\Handler\UploadImageHandler')->uploadImage($file);
-            } catch (ImageUploadException $exception) {
-                return ['error' => $exception->getMessage()];
-            }
-            $data['filename'] = $upload_status['filename'];
-        } else {
-            $data['error'] = 'Error while uploading file';
-        }
-
-        return $data;
     }
 
     /**
@@ -118,9 +120,26 @@ class TopicsController extends Controller implements CreatorListener
         return redirect(route('home'));
     }
 
+    public function uploadImage(Request $request)
+    {
+        if ($file = $request->file('file')) {
+            try {
+                $upload_status = app('Daily\Handler\UploadImageHandler')->uploadImage($file);
+            } catch (ImageUploadException $exception) {
+                return ['error' => $exception->getMessage()];
+            }
+            $data['filename'] = $upload_status['filename'];
+        } else {
+            $data['error'] = 'Error while uploading file';
+        }
+
+        return $data;
+    }
+
     /**
-     *
-     *
+     * ----------------------------------------
+     * CreatorListener implements
+     * ----------------------------------------
      */
     public function createSuccess($model)
     {

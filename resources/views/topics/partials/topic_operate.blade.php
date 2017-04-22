@@ -41,7 +41,55 @@
       </a>
     @endif
 
+    @if (!isset($is_article) && $currentUser && $currentUser->id == $topic->user_id)
+      <a id="topic-append-button" href="javascript:void(0);" class="admin  popover-with-html" data-toggle="modal"
+         data-target="#exampleModal" data-content="帖子附言，添加附言后所有参与讨论的用户都能收到消息提醒，包括点赞和评论的用户">
+        <i class="fa fa-plus"></i>
+      </a>
+      <a data-method="patch" data-btn="transform-button" href="javascript:void(0);"
+         data-url="{{ route('home', [$topic->id]) }}" class="admin  popover-with-html"
+         data-content="转换话题为专栏文章">
+        <i class="fa fa-rocket" aria-hidden="true"></i>
+      </a>
+    @endif
+
   </div>
   <div class="clearfix"></div>
 
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">{{ lang('Append Content') }}</h4>
+      </div>
+
+      <form method="POST" action="{{route('topics.append', $topic->id)}}" accept-charset="UTF-8">
+        {!! csrf_field() !!}
+        <div class="modal-body">
+
+          <div class="alert alert-warning">
+            {{ lang('append_notice') }}
+          </div>
+
+          <div class="form-group">
+            <textarea class="form-control" style="min-height:20px" placeholder="{{ lang('Please using markdown.') }}"
+                      name="content" cols="50" rows="10"></textarea>
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">{{ lang('Close') }}</button>
+          <button type="submit" class="btn btn-primary">{{ lang('Submit') }}</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
 </div>
