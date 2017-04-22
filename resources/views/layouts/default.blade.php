@@ -16,6 +16,8 @@ ______                            _              _______  _______  _______
   <title>@section('title') Daily @show</title>
 
   <link rel="stylesheet" href="{{ cdn(elixir('assets/css/styles.css')) }}">
+
+  <meta name="_token" content="{{ csrf_token() }}">
   <script>
       Config = {
           'cdnDomain': '{{ get_cdn_domain() }}',
@@ -25,7 +27,7 @@ ______                            _              _______  _______  _______
           'routes': {
               'upload_image': '{{ route('upload_image') }}'
           },
-          'token': '{{ csrf_token() }}',
+          'token': '{{csrf_token()}}',
           'environment': '{{ app()->environment() }}',
           'following_users': []
       };

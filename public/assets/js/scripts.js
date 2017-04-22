@@ -5570,6 +5570,7 @@ var QRCode;!function(){function t(t){this.mode=l.MODE_8BIT_BYTE,this.data=t,this
             self.initTimeAgo();
             self.initPopup();
             self.initDeleteForm();
+            self.initAjax();
         },
 
         initTimeAgo: function () {
@@ -5638,6 +5639,201 @@ var QRCode;!function(){function t(t){this.mode=l.MODE_8BIT_BYTE,this.data=t,this
                         $(this).find("form").submit();
                     }
                 });
+        },
+
+        initAjax: function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+
+            this.initDataAjax();
+        },
+
+        initDataAjax: function () {
+            var self = this;
+            $(document).on('click', '[data-ajax]', function () {
+                var that = $(this);
+                var method = that.data('ajax');
+                var url = that.data('url');
+                var active = that.is('.active');
+                var cancelText = that.data('lang-cancel');
+                var isRecomend = that.is('#topic-recomend-button');
+                var isWiki = that.is('#topic-wiki-button');
+                var ribbonContainer = $('.topic .ribbon-container');
+                var ribbon = $('.topic .ribbon');
+                var excellent = $('.topic .ribbon-excellent');
+                var wiki = $('.topic .ribbon-wiki');
+                var total = $('.replies .total b');
+                var voteCount = $('#vote-count');
+                var upVote = $('#up-vote');
+                var isVote = that.is('.vote');
+                var isUpVote = that.is('#up-vote');
+                var isCommentVote = that.is('.comment-vote');
+                var commenVoteCount = that.find('.vote-count');
+                var emptyBlock = $('#replies-empty-block');
+                var originUpVoteActive = upVote.is('.active');
+
+                if (Config.user_id === 0) {
+                    swal({
+                        title: "",
+                        text: '需要登录以后才能执行此操作。',
+                        type: "warning",
+                        showCancelButton: true,
+                        cancelButtonText: "取消",
+                        confirmButtonText: "前往登录"
+                    }, function () {
+                        location.href = '/login-required';
+                    });
+                }
+
+                if (method === 'delete') {
+                    swal({
+                        title: "",
+                        text: "Are you sure want to proceed?",
+                        type: "warning",
+                        showCancelButton: true,
+                        cancelButtonText: "取消",
+                        confirmButtonText: "删除"
+                    }, function () {
+                        that.closest('.list-group-item').slideUp();
+                        $.ajax({
+                            method: method,
+                            url: url
+                        }).done(function (data) {
+                            if (data.status === 200) {
+                                that.closest('.list-group-item').remove();
+                                total.html(parseInt(total.html()) - 1);
+                                if (parseInt(total.html()) === 0) {
+                                    emptyBlock.removeClass('hide');
+                                }
+                            }
+                        }).fail(function () {
+                            that.closest('.list-group-item').show();
+                        });
+                    });
+
+                    return;
+                }
+
+                if (that.is('.ajax-loading')) return;
+                that.addClass('ajax-loading');
+
+                if (active) {
+                    that.removeClass('active');
+                    that.removeClass('animated rubberBand');
+
+                    if (isRecomend) {
+                        excellent.hide();
+                    } else if (isWiki) {
+                        wiki.hide();
+                    }
+
+                    if (isVote) {
+                        // @CJ 如果是点赞，并且是已经点过赞的点赞，那就是去除点赞
+                        $('.user-lists').find("a[data-userId='" + Config.user_id + "']").fadeOut('slow/400/fast', function () {
+                            $(this).remove();
+                        });
+                    }
+                } else {
+                    that.addClass('active');
+                    that.addClass('animated rubberBand');
+
+                    if (cancelText) {
+                        that.find('span').html(cancelText);
+                        self.showPluginDownload();
+                    }
+
+                    if (isRecomend) {
+                        var excellentText = ribbonContainer.data('lang-excellent');
+                        if (excellent.length) {
+                            excellent.show();
+                        } else {
+                            if (ribbon.length) {
+                                ribbon.prepend('<div class="ribbon-excellent"><i class="fa fa-trophy"></i> ' + excellentText + ' </div>');
+                            } else {
+                                ribbonContainer.prepend('<div class="ribbon"><div class="ribbon-excellent"><i class="fa fa-trophy"></i> ' + excellentText + ' </div></div>');
+                            }
+                        }
+                    } else if (isWiki) {
+                        var wikiText = ribbonContainer.data('lang-wiki');
+                        if (wiki.length) {
+                            wiki.show();
+                        } else {
+                            if (ribbon.length) {
+                                ribbon.append('<div class="ribbon-wiki"><i class="fa fa-graduation-cap"></i> ' + wikiText + ' </div>');
+                            } else {
+                                ribbonContainer.append('<div class="ribbon"><div class="ribbon-wiki"><i class="fa fa-graduation-cap"></i> ' + wikiText + ' </div></div>');
+                            }
+                        }
+                    }
+
+                    if (isVote && Config.user_id > 0) {
+                        // @CJ 如果是点赞，并且是没有点过赞的
+                        var newContent = $('.voted-template').clone();
+                        newContent.attr('data-userId', Config.user_id);
+                        newContent.attr('href', Config.user_link);
+                        newContent.find('img').attr('src', Config.user_avatar);
+
+                        newContent.prependTo('.user-lists').show('fast', function () {
+                            $(this).addClass('animated swing');
+                        });
+
+                        $('.vote-hint').hide();
+                    }
+                }
+
+                $.ajax({
+                    method: method,
+                    url: url
+                }).done(function (data) {
+                    if (data.status === 200) {
+                        if (isCommentVote) {
+                            var num = parseInt(commenVoteCount.html());
+                            num = isNaN(num) ? 0 : num;
+
+                            if (data.type === 'sub') {
+                                commenVoteCount.html(num - 1 < 1 ? '' : num - 1);
+                            } else if (data.type === 'add') {
+                                commenVoteCount.html(num + 1);
+                            }
+                        }
+                    }
+                }).fail(function () {
+                    if (!active) {
+                        that.removeClass('active');
+
+                        if (isRecomend) {
+                            excellent.hide();
+                        } else if (isWiki) {
+                            wiki.hide();
+                        }
+                    } else {
+                        that.addClass('active');
+
+                        if (cancelText) {
+                            that.find('span').html(cancelText);
+                        }
+
+                        if (isRecomend) {
+                            excellent.show();
+                        } else if (isWiki) {
+                            wiki.show();
+                        }
+                    }
+
+                    if (isVote) {
+                        if (originUpVoteActive) {
+                            upVote.addClass('active');
+                        } else {
+                            upVote.removeClass('active');
+                        }
+                    }
+                }).always(function () {
+                    that.removeClass('ajax-loading');
+                });
+            })
         }
     };
 

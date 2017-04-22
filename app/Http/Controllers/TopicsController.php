@@ -75,6 +75,16 @@ class TopicsController extends Controller implements CreatorListener
      * Admin Topic Management
      * ----------------------------------------
      */
+    public function recommend($id)
+    {
+        $topic = Topic::findOrFail($id);
+        $this->authorize('recommend', $topic);
+        $topic->is_excellent = $topic->is_excellent == 'yes' ? 'no' : 'yes';
+        $topic->save();
+
+        return response(['status' => 200, 'message' => lang('Operation succeeded.')]);
+    }
+
     public function destroy($id)
     {
         $topic = Topic::findOrFail($id);
@@ -86,6 +96,10 @@ class TopicsController extends Controller implements CreatorListener
         return redirect(route('home'));
     }
 
+    /**
+     *
+     *
+     */
     public function createSuccess($model)
     {
         return redirect()->route('topics.show', $model->id);

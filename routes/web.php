@@ -26,7 +26,7 @@ Route::get('/topics/{id}', 'TopicsController@show')->name('topics.show');
 Route::get('/topics/{id}/edit', 'TopicsController@edit')->name('topics.edit');
 Route::patch('/topics/{id}', 'TopicsController@update')->name('topics.update');
 
-Route::post('topics/recommend/{id}', 'TopicsController@recommend')->name('topics.recommend');
+Route::post('topics/{id}/recommend', 'TopicsController@recommend')->name('topics.recommend');
 Route::post('topics/pin/{id}', 'TopicsController@pin')->name('topics.pin');
 Route::post('topics/sink/{id}', 'TopicsController@sink')->name('topics.sink');
 Route::delete('topics/{id}', 'TopicsController@destroy')->name('topics.destroy');
