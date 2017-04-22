@@ -96,6 +96,17 @@ class TopicsController extends Controller implements CreatorListener
         return response(['status' => 200, 'message' => lang('Operation succeeded.')]);
     }
 
+    public function sink($id)
+    {
+        $topic = Topic::findOrFail($id);
+        $this->authorize('sink', $topic);
+
+        $topic->order = $topic->order >= 0 ? -1 : 0;
+        $topic->save();
+
+        return response(['status' => 200, 'message' => lang('Operation succeeded.')]);
+    }
+
     public function destroy($id)
     {
         $topic = Topic::findOrFail($id);
