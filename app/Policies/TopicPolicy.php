@@ -24,4 +24,9 @@ class TopicPolicy
     {
         return $currentUser->id == $topic->user_id;
     }
+
+    public function pin(User $currentUser, Topic $topic)
+    {
+        return $currentUser->id == $topic->user_id;
+    }
 }
