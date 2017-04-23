@@ -11,9 +11,10 @@
             var self = this;
             self.initTimeAgo();
             self.initPopup();
-            self.initDeleteForm();
-            self.initAjax();
             self.initEditorPreview();
+            self.initDeleteForm();
+            self.initInlineAttach();
+            self.initAjax();
         },
 
         initTimeAgo: function () {
@@ -166,6 +167,22 @@
             });
             $('#reply_content').keyup(function () {
                 self.runPreview();
+            });
+        },
+
+        /**
+         * Upload image
+         */
+        initInlineAttach: function() {
+            var self = this;
+            $('#reply_content').inlineattach({
+                uploadUrl: Config.routes.upload_image,
+                extraParams: {
+                    '_token': Config.token,
+                },
+                onUploadedFile: function(response) {
+                    setTimeout(self.runPreview, 200);
+                },
             });
         },
 
