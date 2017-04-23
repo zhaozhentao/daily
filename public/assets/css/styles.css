@@ -17158,4 +17158,26 @@ body {
   font-size: 14px;
 }
 
+.box {
+  background-color: #fff;
+  padding: 10px;
+  margin: 0 0 20px 0;
+  box-shadow: 0 .2em 0 0 #ddd, 0 0 0 1px #ddd;
+}
+
+@media (max-width: 1400px) {
+  .markdown-body, .markdown-reply {
+    font-size: 15px;
+  }
+  .card {
+    height: 124px;
+  }
+}
+
+div#preview-box {
+  border: dashed 1px;
+  margin-bottom: 80px;
+  background: #faf5eb;
+}
+
 /*# sourceMappingURL=styles.css.map */

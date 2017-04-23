@@ -27,7 +27,7 @@ ______                            _              _______  _______  _______
           'routes': {
               'upload_image': '{{ route('upload_image') }}'
           },
-          'token': '{{ csrf_token() }}',
+          'token': '{{ csrf_token()}}',
           'environment': '{{ app()->environment() }}',
           'following_users': []
       };
