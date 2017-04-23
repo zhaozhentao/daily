@@ -1,7 +1,7 @@
 <div role="navigation" class="navbar navbar-default topnav">
   <div class="container">
     <div class="navbar-left">
-      <a href="{{ route('home') }}" class="logo" style="line-height: 25px; font-size: 22px;">
+      <a href="{{ route('home') }}" class="logo" style="line-height: 25px; font-size: 22px; color: #f36c60;">
         <b>
           Daily
         </b>
@@ -28,7 +28,6 @@
                   <i class="fa fa-edit text-md" style="margin-right: 6px;"></i> 日志
                 </a>
               </li>
-              <li role="separator" class="divider"></li>
               <li>
                 <a href="{{ URL::route('logout') }}"
                    data-lang-loginout="{{ lang('Are you sure want to logout?') }}">

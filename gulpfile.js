@@ -54,6 +54,10 @@ elixir(function (mix) {
             'node_modules/font-awesome/fonts'
         ], 'public/assets/fonts/font-awesome')
 
+        .copy([
+            'resources/assets/img'
+        ], 'public/assets/img')
+
         .sass([
             'base.scss',
             'app.scss',

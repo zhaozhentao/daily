@@ -1,5 +1,6 @@
 .home-nav {
   padding: 10px;
+  font-size: 17px;
 }
 
 .home-nav-container {
@@ -10,30 +11,47 @@
 
 .home-content-time {
   display: inline-block;
-  vertical-align: baseline;
-  zoom: 1;
-  width: 130px;
-  text-transform: uppercase;
   float: right;
   color: #999;
   font-size: 14px;
-  text-align: right;
+  margin-top: 6px;
 }
 
 .home-content-title {
-  font-size: 16px;
+  font-size: 18px;
+}
+
+.home-content-title:hover {
+  text-decoration: none;
 }
 
 .home-content-item {
-  margin-top: 16px;
+  margin-top: 22px;
   display: inline-block;
   width: 100%;
 }
 
 .logo {
   text-decoration: none !important;
-  color: gray !important;
   font-size: 26px;
   margin-top: 12px;
   display: inline-block;
+}
+
+html, body {
+  background: transparent;
+}
+
+body::before {
+  background-attachment: fixed;
+  content: '';
+  will-change: transform;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  position: fixed;
+  background: url('/assets/img/andy.jpeg');
+  background-size: cover;
 }
