@@ -33,5 +33,6 @@ return [
     'Reply' => '回复',
     'Total Reply Count' => '回复数量',
     'No comments' => '暂无评论',
-
+    'Operation succeeded.' => '操作成功！',
+    'Login Successfully.' => '成功登录！',
 ];

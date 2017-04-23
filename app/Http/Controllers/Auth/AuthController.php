@@ -20,6 +20,13 @@ class AuthController extends Controller implements UserCreatorListener
         return view('auth.login');
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        Flash::success(lang('Operation succeeded.'));
+        return redirect()->route('home');
+    }
+
     public function create()
     {
         if (!Session::has('oauthData')) {
