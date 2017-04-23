@@ -20,18 +20,18 @@
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
               <li>
                 <a href="{{ route('users.show', Auth::user()->id) }}">
-                  <i class="fa fa-user-circle text-md" style="margin-right: 6px"></i> 个人中心
+                  <i class="fa fa-user-circle text-md nav-menu-icon"></i> 个人中心
                 </a>
               </li>
               <li>
                 <a href="{{ route('topics.create') }}">
-                  <i class="fa fa-edit text-md" style="margin-right: 6px;"></i> 日志
+                  <i class="fa fa-edit text-md nav-menu-icon"></i> 日志
                 </a>
               </li>
               <li>
                 <a href="{{ URL::route('logout') }}"
                    data-lang-loginout="{{ lang('Are you sure want to logout?') }}">
-                  <i class="fa fa-sign-out text-md"></i> {{ lang('Logout') }}
+                  <i class="fa fa-sign-out text-md nav-menu-icon"></i> {{ lang('Logout') }}
                 </a>
               </li>
             </ul>
