@@ -34,3 +34,4 @@ Route::delete('topics/{id}', 'TopicsController@destroy')->name('topics.destroy')
 
 # ------------------ topic ------------------------
 Route::post('/replies', 'RepliesController@store')->name('replies.store');
+Route::delete('replies/{id}', 'RepliesController@destroy')->name('replies.destroy');

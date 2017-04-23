@@ -2,6 +2,23 @@
   hi
 </div>
 
+<!-- Reply List -->
+<div class="replies panel panel-default list-panel replies-index">
+  <div class="panel-heading">
+    <div class="total">{{ lang('Total Reply Count') }}: <b>{{ $replies->total() }}</b></div>
+  </div>
+
+  <div class="panel-body">
+    @if (count($replies))
+      @include('topics.partials.replies', ['manage_topics' => $currentUser ? $currentUser->can("manage_topics") : false])
+      <div id="replies-empty-block" class="empty-block hide">{{ lang('No comments') }}~~</div>
+    @else
+      <ul class="list-group row"></ul>
+      <div id="replies-empty-block" class="empty-block">{{ lang('No comments') }}~~</div>
+    @endif
+  </div>
+</div>
+
 <!-- Reply Box -->
 <div class="reply-box form box-block">
   <form method="post" action="{{route('replies.store')}}" accept-charset="UTF-8" id="reply-form">

@@ -13,4 +13,9 @@ class Reply extends Model
         'topic_id',
         'body_original',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

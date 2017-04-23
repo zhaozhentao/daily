@@ -237,6 +237,7 @@ return [
         'Image'     => Intervention\Image\Facades\Image::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Flash'            => Laracasts\Flash\Flash::class,
+        'Input'     => Illuminate\Support\Facades\Input::class,
     ],
 
 ];

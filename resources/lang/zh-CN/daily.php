@@ -31,5 +31,6 @@ return [
     'You need to verify the email for commenting.' => '需要验证邮箱后才能发表评论.',
     'User Login Required for commenting.' => '需要登录后才能发表评论.',
     'Reply' => '回复',
+    'Total Reply Count' => '回复数量',
 
 ];

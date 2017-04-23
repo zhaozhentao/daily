@@ -15,9 +15,11 @@ class TopicsController extends Controller implements CreatorListener
 {
     public function show($id)
     {
-        $topic = Topic::find($id);
+        $topic = Topic::findOrFail($id);
 
-        return view('topics.show', compact('topic'));
+        $replies = $topic->getRepliesWithLimit(config('daily.replies_perpage'));
+
+        return view('topics.show', compact('topic', 'replies'));
     }
 
     public function create()

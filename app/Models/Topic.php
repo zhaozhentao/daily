@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Input;
+use Laracasts\Presenter\PresentableTrait;
 
 class Topic extends Model
 {
@@ -19,6 +21,9 @@ class Topic extends Model
         'updated_at'
     ];
 
+    use PresentableTrait;
+    protected $presenter = 'Daily\Presenters\TopicPresenter';
+
     public static function makeExcerpt($body)
     {
         $html = $body;
@@ -31,6 +36,18 @@ class Topic extends Model
         return date("d/m/Y", strtotime($date));;
     }
 
+    public function getRepliesWithLimit($limit = 30)
+    {
+        $pageName = 'page';
+
+        $latest_page = is_null(\Input::get($pageName)) ? ceil($this->reply_count / $limit) : 1;
+
+        return $this->replies()
+            ->orderBy('created_at', 'asc')
+            ->with('user')
+            ->paginate($limit, ['*'], $pageName, $latest_page);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -39,5 +56,10 @@ class Topic extends Model
     public function appends()
     {
         return $this->hasMany(Append::class);
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
     }
 }
