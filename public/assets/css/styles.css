@@ -17290,7 +17290,9 @@ embed {
 }
 
 .topics-show .entry-content {
-  padding: 22px;
+  padding-left: 22px;
+  padding-right: 22px;
+  padding-bottom: 0px;
 }
 
 .topics-show .panel .panel-heading {
@@ -19321,6 +19323,10 @@ hr {
   font-size: 17px;
 }
 
+.home-nav:hover {
+  text-decoration: none;
+}
+
 .home-nav-container {
   text-align: center;
   height: 54px;
@@ -19376,6 +19382,14 @@ body::before {
   position: fixed;
   background: url("/assets/img/andy.jpeg");
   background-size: cover;
+}
+
+.topic .panel-footer {
+  padding-top: 0px;
+}
+
+.signature {
+  margin-top: 30px;
 }
 
 /*# sourceMappingURL=styles.css.map */

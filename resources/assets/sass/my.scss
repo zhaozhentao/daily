@@ -1,6 +1,9 @@
 .home-nav {
   padding: 10px;
   font-size: 17px;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .home-nav-container {
@@ -58,4 +61,12 @@ body::before {
   position: fixed;
   background: url('/assets/img/andy.jpeg');
   background-size: cover;
+}
+
+.topic .panel-footer {
+  padding-top: 0px;
+}
+
+.signature {
+  margin-top: 30px;
 }
