@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ReplyStoreRequest;
+use App\Models\Reply;
 use Daily\Core\CreatorListener;
 use Auth;
 use Flash;
@@ -11,11 +12,31 @@ use Request;
 
 class RepliesController extends Controller implements CreatorListener
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function store(ReplyStoreRequest $request)
     {
         return app('Daily\Creators\ReplyCreator')->create($this, $request->except('_token'));
     }
 
+    public function destroy($id)
+    {
+        $reply = Reply::findOrFail($id);
+        $this->authorize('delete', $reply);
+        $reply->delete();
+
+        $reply->topic()->decrement('reply_count', 1);
+        return response(['status' => 200, 'message' => lang('Operation succeeded.')]);
+    }
+
+    /**
+     * ----------------------------------------
+     * CreatorListener Delegate
+     * ----------------------------------------
+     */
     public function createSuccess($model)
     {
         Flash::success(lang('Operation succeeded.'));
@@ -24,6 +45,7 @@ class RepliesController extends Controller implements CreatorListener
 
     public function createFailed($error)
     {
-
+        Flash::error(lang('Operation failed.'));
+        return redirect()->back();
     }
 }

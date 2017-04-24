@@ -8,7 +8,6 @@
 
 namespace Daily\Creators;
 
-
 use App\Models\Reply;
 use App\Models\Topic;
 use Carbon\Carbon;
