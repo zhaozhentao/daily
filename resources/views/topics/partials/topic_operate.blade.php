@@ -29,7 +29,7 @@
       @endif
     @endif
 
-    @if($currentUser->id && $currentUser->id == $topic->user_id)
+    @if($currentUser && ($manage_topics || $currentUser->id == $topic->user_id))
       <a data-method="delete" id="topic-delete-button" href="javascript:void(0);"
          data-url="{{ route('topics.destroy', [$topic->id]) }}" data-content="{{ lang('Delete') }}"
          class="admin  popover-with-html">
