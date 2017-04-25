@@ -32,6 +32,7 @@ Route::post('topics/{id}/pin', 'TopicsController@pin')->name('topics.pin');
 Route::post('topics/{id}/sink', 'TopicsController@sink')->name('topics.sink');
 Route::delete('topics/{id}', 'TopicsController@destroy')->name('topics.destroy');
 
-# ------------------ topic ------------------------
+# ------------------ reply ------------------------
 Route::post('/replies', 'RepliesController@store')->name('replies.store');
 Route::delete('replies/{id}', 'RepliesController@destroy')->name('replies.destroy');
+Route::post('/replies/{id}/vote', 'RepliesController@vote')->name('replies.vote');

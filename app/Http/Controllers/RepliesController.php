@@ -22,6 +22,18 @@ class RepliesController extends Controller implements CreatorListener
         return app('Daily\Creators\ReplyCreator')->create($this, $request->except('_token'));
     }
 
+    public function vote($id)
+    {
+        $reply = Reply::findOrFail($id);
+        $type = app()->make('Daily\Vote\Voter')->vote($reply);
+
+        return response([
+            'status' => 200,
+            'message' => lang('Operation succeeded.'),
+            'type' => $type,
+        ]);
+    }
+
     public function destroy($id)
     {
         $reply = Reply::findOrFail($id);
