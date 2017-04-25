@@ -33,7 +33,7 @@
         @endforeach
       </div>
 
-      @include('topics.partials.topic_operate')
+      @include('topics.partials.topic_operate', ['manage_topics' => $currentUser ? ($currentUser->can("manage_topics")) : false])
     </div>
     @include('topics.partials.show_segment')
   </div>

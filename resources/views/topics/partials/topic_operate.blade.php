@@ -4,27 +4,29 @@
   </div>
 
   <div class="pull-right actions">
-    <a data-ajax="post" id="topic-recomend-button" href="javascript:void(0);"
-       data-url="{{ route('topics.recommend', [$topic->id]) }}"
-       class="admin popover-with-html {{ $topic->is_excellent == 'yes' ? 'active' : ''}}"
-       data-content="推荐主题，加精的帖子会出现在首页">
-      <i class="fa fa-trophy"></i>
-    </a>
-
-    @if ($topic->order >= 0)
-      <a data-ajax="post" id="topic-pin-button" href="javascript:void(0);"
-         data-url="{{ route('topics.pin', [$topic->id]) }}"
-         class="admin popover-with-html {{ $topic->order > 0 ? 'active' : '' }}" data-content="帖子置顶，会在列表页置顶">
-        <i class="fa fa-thumb-tack"></i>
+    @if($manage_topics)
+      <a data-ajax="post" id="topic-recomend-button" href="javascript:void(0);"
+         data-url="{{ route('topics.recommend', [$topic->id]) }}"
+         class="admin popover-with-html {{ $topic->is_excellent == 'yes' ? 'active' : ''}}"
+         data-content="推荐主题，加精的帖子会出现在首页">
+        <i class="fa fa-trophy"></i>
       </a>
-    @endif
 
-    @if ($topic->order <= 0)
-      <a data-ajax="post" id="topic-sink-button" href="javascript:void(0);"
-         data-url="{{ route('topics.sink', [$topic->id]) }}"
-         class="admin popover-with-html {{ $topic->order < 0 ? 'active' : '' }}" data-content="沉贴，帖子将会被降低排序优先级">
-        <i class="fa fa-anchor"></i>
-      </a>
+      @if ($topic->order >= 0)
+        <a data-ajax="post" id="topic-pin-button" href="javascript:void(0);"
+           data-url="{{ route('topics.pin', [$topic->id]) }}"
+           class="admin popover-with-html {{ $topic->order > 0 ? 'active' : '' }}" data-content="帖子置顶，会在列表页置顶">
+          <i class="fa fa-thumb-tack"></i>
+        </a>
+      @endif
+
+      @if ($topic->order <= 0)
+        <a data-ajax="post" id="topic-sink-button" href="javascript:void(0);"
+           data-url="{{ route('topics.sink', [$topic->id]) }}"
+           class="admin popover-with-html {{ $topic->order < 0 ? 'active' : '' }}" data-content="沉贴，帖子将会被降低排序优先级">
+          <i class="fa fa-anchor"></i>
+        </a>
+      @endif
     @endif
 
     @if($currentUser->id && $currentUser->id == $topic->user_id)

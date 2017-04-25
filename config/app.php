@@ -185,7 +185,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Mews\Purifier\PurifierServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        App\Providers\ComposerServiceProvider::class
+        App\Providers\ComposerServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
     ],
 
     /*
@@ -200,7 +201,6 @@ return [
     */
 
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
@@ -239,6 +239,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Flash'            => Laracasts\Flash\Flash::class,
         'Input'     => Illuminate\Support\Facades\Input::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
     ],
 
 ];

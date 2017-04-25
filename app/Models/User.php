@@ -7,10 +7,12 @@ use App\Models\Traits\UserSocialiteHelper;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laracasts\Presenter\PresentableTrait;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
     use Notifiable, UserSocialiteHelper, UserAvatarHelper;
+    use EntrustUserTrait;
 
     protected $guarded = ['id', 'is_banned'];
 

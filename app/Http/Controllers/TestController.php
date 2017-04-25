@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reply;
-use Auth;
-use DB;
-use Image;
+use Daily\Notification\Mention;
 
 class TestController extends Controller
 {
-    public function test()
+    public function test(Mention $mentionParser)
     {
-
+        $mentionParser->parse("@Laravel @黄老吉 百年好合");
+        var_dump($mentionParser->usernames);
     }
 }
