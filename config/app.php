@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('TIMEZONE') ?: 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -234,12 +234,12 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        'Purifier'  => Mews\Purifier\Facades\Purifier::class,
-        'Image'     => Intervention\Image\Facades\Image::class,
+        'Purifier' => Mews\Purifier\Facades\Purifier::class,
+        'Image' => Intervention\Image\Facades\Image::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'Flash'            => Laracasts\Flash\Flash::class,
-        'Input'     => Illuminate\Support\Facades\Input::class,
-        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'Flash' => Laracasts\Flash\Flash::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
+        'Entrust' => Zizaco\Entrust\EntrustFacade::class,
     ],
 
 ];
