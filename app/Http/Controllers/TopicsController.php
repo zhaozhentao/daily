@@ -13,6 +13,11 @@ use Laracasts\Flash\Flash;
 
 class TopicsController extends Controller implements CreatorListener
 {
+    public function __construct()
+    {
+        $this->middleware('topic', ['only' => ['create', 'store']]);
+    }
+
     public function show($id)
     {
         $topic = Topic::findOrFail($id);
