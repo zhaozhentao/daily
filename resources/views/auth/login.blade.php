@@ -16,10 +16,6 @@
              href="{{ URL::route('auth.oauth', ['driver' => 'github']) }}">
             <i class="fa fa-github-alt"></i> {{lang('Login with GitHub')}}
           </a>
-          <a class="btn btn-lg btn-default btn-block"
-             href="{{ URL::route('auth.oauth', ['driver' => 'wechat']) }}">
-            <i class="fa fa-weixin"></i> {{lang('Login with WeChat')}}
-          </a>
         </div>
       </div>
     </div>
