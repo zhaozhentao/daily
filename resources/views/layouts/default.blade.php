@@ -16,6 +16,7 @@ ______                            _              _______  _______  _______
   <title>@section('title') Daily @show</title>
 
   <link rel="stylesheet" href="{{ cdn(elixir('assets/css/styles.css')) }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
   <meta name="_token" content="{{ csrf_token() }}">
   <script>
