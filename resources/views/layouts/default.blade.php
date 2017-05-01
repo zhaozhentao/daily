@@ -39,7 +39,7 @@ ______                            _              _______  _______  _______
 
 <body id="body" class="{{ route_class() }}">
 
-<div id="wrap">
+<div id="wrap" style="overflow-x: hidden">
   @include('layouts.partials.nav')
 
   <div class="container main-container">
