@@ -19337,16 +19337,13 @@ hr {
   margin-right: 6px;
 }
 
-.home-content-time {
-  display: inline-block;
-  float: right;
-  color: #999;
-  font-size: 14px;
-  margin-top: 6px;
-}
-
 .home-content-title {
   font-size: 18px;
+}
+
+.home-content-time {
+  color: #999;
+  font-size: 14px;
 }
 
 .home-content-title:hover {
@@ -19354,7 +19351,6 @@ hr {
 }
 
 .home-content-item {
-  margin-top: 22px;
   display: inline-block;
   width: 100%;
 }
@@ -19390,6 +19386,30 @@ body::before {
 
 .signature {
   margin-top: 30px;
+}
+
+@media only screen and (min-device-width: 120px) and (max-device-width: 480px) {
+  .home-content-item-container {
+    padding-left: 0px;
+  }
+  .home-content-time {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .home-content-item-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .home-content-time {
+    display: inline-block;
+    float: right;
+    margin-top: 6px;
+  }
+  .home-content-item {
+    margin-top: 22px;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

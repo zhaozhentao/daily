@@ -16,16 +16,13 @@
   margin-right: 6px;
 }
 
-.home-content-time {
-  display: inline-block;
-  float: right;
-  color: #999;
-  font-size: 14px;
-  margin-top: 6px;
-}
-
 .home-content-title {
   font-size: 18px;
+}
+
+.home-content-time {
+  color: #999;
+  font-size: 14px;
 }
 
 .home-content-title:hover {
@@ -33,7 +30,6 @@
 }
 
 .home-content-item {
-  margin-top: 22px;
   display: inline-block;
   width: 100%;
 }

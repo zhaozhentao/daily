@@ -62,6 +62,8 @@ elixir(function (mix) {
             'base.scss',
             'app.scss',
             'my.scss',
+            'mobile.scss',
+            'desktop.scss',
         ], 'public/assets/css/styles.css')
 
         .scripts(basejs.concat([
