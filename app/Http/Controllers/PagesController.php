@@ -8,7 +8,7 @@ class PagesController extends Controller
 {
     public function home()
     {
-        $topics = User::find(1)->topics()->paginate(20);
+        $topics = User::find(1)->topics()->orderBy('created_at', 'desc')->paginate(20);
 
         return view('pages.home', compact('topics'));
     }
