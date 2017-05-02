@@ -33,7 +33,7 @@ class Topic extends Model
 
     public function getCreatedAtAttribute($date)
     {
-        return date("d/m/Y", strtotime($date));;
+        return date("Y/m/d", strtotime($date));;
     }
 
     public function getRepliesWithLimit($limit = 30)
