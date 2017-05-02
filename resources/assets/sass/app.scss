@@ -786,12 +786,6 @@ and (max-device-width : 480px) {
     margin-right: 6px;
   }
 
-  .navbar {
-    .container:before, .container:after, .container-fluid:before, .navbar-header:before, .navbar-header:after, .navbar-collapse:before, .navbar-collapse:after {
-      display: table;
-      content: initial;
-    }
-  }
   .topnav {
     .navbar-brand {
       height: 38px;

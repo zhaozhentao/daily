@@ -6,4 +6,27 @@
   .home-content-time {
     display: block;
   }
+
+  .home-content-item {
+    margin-bottom: 10px;
+  }
+
+  .login-container {
+    display: inline-block;
+    float: right;
+  }
+
+  .login-ul {
+    margin: 0;
+  }
+
+  .mobile-navbar-header {
+    float: left;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-user-menu-desktop {
+    display: none !important;
+  }
 }

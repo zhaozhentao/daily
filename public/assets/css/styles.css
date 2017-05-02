@@ -17602,10 +17602,6 @@ embed {
   .media > .pull-left {
     margin-right: 6px;
   }
-  .navbar .container:before, .navbar .container:after, .navbar .container-fluid:before, .navbar .navbar-header:before, .navbar .navbar-header:after, .navbar .navbar-collapse:before, .navbar .navbar-collapse:after {
-    display: table;
-    content: initial;
-  }
   .topnav .navbar-brand {
     height: 38px;
     padding-top: 15px;
@@ -19355,6 +19351,11 @@ hr {
   width: 100%;
 }
 
+.login-btn {
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
 .logo {
   text-decoration: none !important;
   font-size: 26px;
@@ -19395,6 +19396,25 @@ body::before {
   .home-content-time {
     display: block;
   }
+  .home-content-item {
+    margin-bottom: 10px;
+  }
+  .login-container {
+    display: inline-block;
+    float: right;
+  }
+  .login-ul {
+    margin: 0;
+  }
+  .mobile-navbar-header {
+    float: left;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-user-menu-desktop {
+    display: none !important;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -19409,6 +19429,12 @@ body::before {
   }
   .home-content-item {
     margin-top: 22px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .nav-user-menu.nav-mobile-menu {
+    display: none !important;
   }
 }
 

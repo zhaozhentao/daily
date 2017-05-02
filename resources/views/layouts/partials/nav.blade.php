@@ -1,13 +1,44 @@
-<div role="navigation" class="navbar navbar-default topnav">
-  <div class="container">
-    <div class="navbar-left">
-      <a href="{{ route('home') }}" class="logo" style="line-height: 25px; font-size: 22px; color: #f36c60;">
-        <b>
-          Daily
-        </b>
-      </a>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header {{Auth::check()? '':'mobile-navbar-header' }}">
+      <a class="navbar-brand" href="{{ route('home') }}" style="color: #f36c60; font-weight: 600;">Daily</a>
+      @if(Auth::check())
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      @endif
     </div>
-    <div class="navbar-right">
+
+    @if(Auth::check())
+      <div class="collapse navbar-collapse nav-user-menu nav-mobile-menu" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="{{ route('users.show', Auth::user()->id) }}">
+              <i class="fa fa-user-circle text-md nav-menu-icon"></i> 个人中心
+            </a>
+          </li>
+          @if(Auth::user()->can('manage_topics'))
+            <li>
+              <a href="{{ route('topics.create') }}">
+                <i class="fa fa-edit text-md nav-menu-icon"></i> 日志
+              </a>
+            </li>
+          @endif
+          <li>
+            <a href="{{ URL::route('logout') }}"
+               data-lang-loginout="{{ lang('Are you sure want to logout?') }}">
+              <i class="fa fa-sign-out text-md nav-menu-icon"></i> {{ lang('Logout') }}
+            </a>
+          </li>
+        </ul>
+      </div>
+    @endif
+
+    <div class="navbar-right {{ Auth::check()? 'nav-user-menu-desktop': '' }}">
       <ul class="nav navbar-nav github-login">
         @if(Auth::check())
           <li>
@@ -46,5 +77,6 @@
         @endif
       </ul>
     </div>
+
   </div>
-</div>
+</nav>
