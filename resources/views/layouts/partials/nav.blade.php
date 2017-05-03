@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header {{Auth::check()? '':'mobile-navbar-header' }}">
-      <a class="navbar-brand" href="{{ route('home') }}" style="color: #f36c60; font-weight: 600;">Daily</a>
+      <a class="navbar-brand" href="{{ route('home') }}" style="color: #f36c60; font-weight: bold;">Daily</a>
       @if(Auth::check())
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                 data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
