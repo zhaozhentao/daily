@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="panel-body">
-          <ul class="home-content-item-container">
+          <ul class="home-content-item-container" style="margin-bottom: 0px;">
             @foreach($topics as $topic)
               <li class="home-content-item">
                 <a href="{{ route('topics.show', $topic->id) }}" class="home-content-title">{{ $topic->title }}</a>
