@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default">
-  <div class="container">
+  <div class="container nav-container">
     <div class="container-fluid">
       <div class="navbar-header {{Auth::check()? '':'mobile-navbar-header' }}">
         <a class="navbar-brand" href="{{ route('home') }}" style="color: #f36c60; font-weight: bold; font-size: 22px;">

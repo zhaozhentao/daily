@@ -19400,6 +19400,7 @@ body::before {
   }
   .home-content-time {
     display: block;
+    font-size: 8px;
   }
   .home-content-item {
     margin-top: 10px;
@@ -19414,6 +19415,9 @@ body::before {
   }
   .mobile-navbar-header {
     float: left;
+  }
+  .container.nav-container {
+    padding: 0;
   }
 }
 
