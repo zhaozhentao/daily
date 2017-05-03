@@ -39,7 +39,7 @@
     @endif
 
     <div class="navbar-right {{ Auth::check()? 'nav-user-menu-desktop': '' }}">
-      <ul class="nav navbar-nav github-login">
+      <ul class="nav navbar-nav github-login nav-right-item">
         @if(Auth::check())
           <li>
             <a href="#" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
