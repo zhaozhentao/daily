@@ -19,6 +19,7 @@ class RepliesPolicy
 
     public function delete(User $currentUser, Reply $reply)
     {
-        return $currentUser->id == $reply->user_id;
+        return $currentUser->can("manage_topics")
+            || $currentUser->id == $reply->user_id;
     }
 }
