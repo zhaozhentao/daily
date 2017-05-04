@@ -53,6 +53,7 @@ return [
 
     'url' => env('APP_URL'),
     'url_static' => env('URL_STATIC'),
+    'user_static' => env('USER_STATIC'),
 
     /*
     |--------------------------------------------------------------------------
