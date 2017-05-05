@@ -19372,7 +19372,7 @@ html, body {
   background: transparent;
 }
 
-body::before {
+html::after {
   background-attachment: fixed;
   content: '';
   will-change: transform;
